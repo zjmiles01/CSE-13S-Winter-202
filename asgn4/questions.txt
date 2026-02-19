@@ -1,0 +1,55 @@
+Question 1
+----------
+
+    Describe a "test plan" for the various implementations of calc.  Given
+    that a program cannot be tested on every possible input, what are three
+    examples of tests that are implied by the spec but not checked by
+    test_3_4.sh?
+
+
+Answer 1
+--------
+
+   A proper test plan for calc must test more than simple valid addition.
+Three examples of tests implied by the spec but not checked by test_3_4.sh are:
+
+1. Testing invalid input such as alphabetic characters (e.g. ./calc xyz 4) to confirm it prints "BAD INPUT" and returns non-zero.
+2. Testing integers outside the allowed tiny integer range (e.g. ./calc 600 1) to confirm it prints "TOO BIG".
+3. Testing for leading zero errors (e.g. ./calc 03 4) since tiny integers may not start with 0 unless the value is exactly 0.
+
+These tests ensure the program follows the full specification and not just correct addition behavior.
+
+
+Question 2
+----------
+
+    You may have noticed that the spec says nothing about what to do if the
+    user supplies too many arguments at the command line.  (Unfortunately,
+    ambiguity in specifications is very common in practice and can be very
+    confusing for programmers.)
+
+    If you were asked to implement calc given this spec, you would be
+    forced to choose from among at least three interpretations of what calc
+    would do when called as, say, 
+
+        ./calc 3 4 5
+
+    1. Calc should sum all of the arguments (and print 12).
+
+    2. Calc should ignore the third argument (and print 7).
+
+    3. Calc should print an error message and return non-zero.
+
+    Below, state whether your test scripts check what calc does when given
+    more than two arguments.  Explain why you wrote your scripts that way.
+
+
+Answer 2
+--------
+
+   My test scripts do not explicitly test behavior when more than two arguments are given.
+The specification does not clearly define expected behavior in this case.
+I focused my test scripts on requirements that were explicitly stated in the spec to avoid false positives.
+If implementing calc myself, I would choose to print an error and return non-zero for too many arguments.
+
+
